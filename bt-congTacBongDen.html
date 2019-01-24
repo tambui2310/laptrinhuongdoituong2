@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<input type="button" name="" value="Bật" onclick="btn.switchOn();" >
+	<input type="button" name="" value="Tắt" onclick="btn.switchOff();">
+	<h3 id="out"></h3>
+	<script type="text/javascript">
+		class ElectricLamp {
+			constructor(status){
+				this.status = status;
+			}
+			turnOn(){
+				this.status = true;
+				document.getElementById('out').innerHTML = "Đang bật";
+			}
+			turnOff(){
+				this.status = false;
+				document.getElementById('out').innerHTML = "Đang tắt";
+			}
+		}
+		class SwitchButton {
+			constructor (status, lamp){
+				this.status = status;
+				this.lamp = lamp;
+			}
+			
+			switchOff(){
+				this.status = false;
+				this.lamp.turnOff();
+
+			}
+			switchOn(){
+				this.status = true;
+				this.lamp.turnOn();
+
+			}
+		}
+		var lamp = new ElectricLamp(false);
+		var btn = new SwitchButton(false,lamp);
+	</script>
+
+</body>
+</html>

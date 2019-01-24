@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<p id="tao"></p>
+	<input type="button" value="Thêm táo" onclick="resetTao(this.value)">
+	<p id="tennam"></p> 
+	<p id="gt"></p>
+	<p id="nang"></p>
+	<input type="button" value="Adam Ăn" onclick="adamAnTao()">
+	<p id="tennu"></p> 
+	<p id="gioitinhnu"></p>
+	<p id="nang1"></p>
+	<input type="button" value="Eva Ăn" onclick="evaAnTao()">
+
+	<script type="text/javascript">
+		class Apple {
+			constructor(weight){
+				this.weight = weight;
+			}
+			decrease(){
+				this.weight--;
+				return this.weight;
+			}
+			isEmpty(){
+				if (this.weight > 0) {
+					return this.weight;
+				}
+			}
+			getWeight(){
+				return this.weight;
+			}
+			resetApple(){
+				return this.weight = 10;
+			}
+		}
+		class Human{
+			constructor(ten, gioitinh, cannang ){
+				this.ten = ten;
+				this.gioitinh = gioitinh;
+				this.cannang = cannang;
+			}
+			say(){
+				console.log("Hello");
+			}
+			eat(){
+				return this.cannang += 1;
+			}
+			isMale(){
+				if (this.gioitinh){
+					return this.gioitinh = "Nam";
+				}
+				else {
+					return this.gioitinh = "Nữ";
+				}
+			}
+			
+
+		}
+		var apple = new Apple(10);
+		document.getElementById('tao').innerHTML = "Khối lượng táo còn: " + apple.getWeight() + "kg";
+		var human = new Human("Adam", true, 60 );
+		document.getElementById('tennam').innerHTML = human.ten;
+		document.getElementById('gt').innerHTML = human.isMale();
+		document.getElementById('nang').innerHTML ="Cân nặng " + human.cannang + "kg";
+		function adamAnTao() {
+			if (apple.weight > 0) {
+				document.getElementById('tao').innerHTML = "Khối lượng táo còn: " + apple.decrease() + "kg";
+				document.getElementById('nang').innerHTML ="Cân nặng " + human.eat() + "kg";
+			}
+		}
+		var women = new Human("Eva", false, 55);
+		document.getElementById('tennu').innerHTML = women.ten;
+		document.getElementById('gioitinhnu').innerHTML = women.isMale();
+		document.getElementById('nang1').innerHTML = "Cân nặng " + women.cannang + "kg";
+		function evaAnTao() {
+			if (apple.weight > 0) {
+				document.getElementById('tao').innerHTML = "Khối lượng táo còn: " + apple.decrease() + "kg";
+				document.getElementById('nang1').innerHTML ="Cân nặng " + women.eat() + "kg";
+			}
+		}
+		function resetTao() {
+			if (apple.weight < 10) {
+			document.getElementById('tao').innerHTML = "Khối lượng táo còn: " + apple.resetApple() + "kg";
+		}
+		}
+
+	</script>
+
+</body>
+</html>
